@@ -1,11 +1,15 @@
-import sys, os.path as op
-sys.path.append((pDir:=lambda x, n, i=0: pDir(op.abspath(op.dirname(x)), n, i+1) if i < n else x)(__file__, 3))
-from measure import measure
+# import sys, os.path as op
+# sys.path.append((pDir:=lambda x, n, i=0: pDir(op.abspath(op.dirname(x)), n, i+1) if i < n else x)(__file__, 2))
 
+from measure import measure
 from itertools import permutations
 
 @measure
-def myPermutations(li, n):
+def permutations1(li, n):
+    return permutations(li, n)
+
+@measure
+def permutations2(li, n):
     visited = [False for _ in li]
     arr = []
     ret = []
@@ -26,10 +30,10 @@ def myPermutations(li, n):
 
 if __name__ == "__main__":
     items = [chr(ord('0') + i) for i in range(5)]
-    per = permutations(items, 3)
-    myPer = myPermutations(items, 3)
+    out1 = permutations1(items, 3)
+    out2 = permutations2(items, 3)
     same = True
-    for a, b in zip(per, myPer):
+    for a, b in zip(out1, out2):
         if a != b:
             same = False
         print(a, b)
