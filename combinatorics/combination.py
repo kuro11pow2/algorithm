@@ -1,10 +1,10 @@
 import sys, os.path as op
 sys.path.append((pDir:=lambda x, n, i=0: pDir(op.abspath(op.dirname(x)), n, i+1) if i < n else x)(__file__, 3))
-from checkTime import checkTime
+from measure import measure
 
 from itertools import combinations
 
-@checkTime
+@measure
 def myCombinations(li, n):
     nLi = len(li)
     arr = []

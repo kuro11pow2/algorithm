@@ -1,6 +1,6 @@
 import timeit
 
-def checkTime(f):
+def measure(f):
     def wrapper(*args, **kw):
         s = timeit.default_timer()
         output = f(*args, **kw)
